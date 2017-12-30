@@ -13,23 +13,37 @@ body#overr-boot{
 }
 
 .font{
-    font-family: 'Raleway';
+    font-family: 'Raleway', sans-serif;
     font-size: 20px;
 }
 
 .timer{
-
+    color: #FFFFFF;
+    display: inline-block;
+    padding: 5px 8px;
+    position: absolute;
+    left: 50px;
+    margin-top: 5px;
+    font-family: 'Abel', sans-serif;
+    font-size: 25px;
 }
 
-.test{
-
+.test-name{
+    color: #FFFFFF;
+    display: inline-block;
+    padding: 5px 8px;
+    position: absolute;
+    right: 50px;
+    margin-top: 5px;
+    font-family: 'Abel', sans-serif;
+    font-size: 25px;
 }
 
 .test-question{
     background-color: #DDDDDD;
     width: 800px;
-    margin: 15px auto;
-    border-radius: 8px;
+    margin: 40px auto;
+    border-radius: 10px;
 }
 
 .details{
@@ -39,10 +53,10 @@ body#overr-boot{
     padding: 3px 6px;
 }
 
-.questionId{
+.question-id{
     margin-top: 5px;
-    border: 3px solid black;
-    border-radius: 12px;
+    border: 2px solid black;
+    border-radius: 10px;
     padding: 6px 10px;
     color: white;
     background-color: #FF851B;
@@ -50,16 +64,16 @@ body#overr-boot{
     font-size: 18px;
 }
 
-.questionPoints{
+.question-points{
     list-style: none;
     margin-top: 5px;
 }
 
-.questionPoints> li{
+.question-points> li{
     display: inline;
-    border: 3px solid black;
+    border: 2px solid black;
     margin: 5px;
-    border-radius: 12px;
+    border-radius: 10px;
     padding: 6px 10px;
     color: white;
     font-family: 'Raleway';
@@ -79,23 +93,35 @@ body#overr-boot{
 }
 
 .choice-list{
-    background-color: #DDDDDD;
-    width: 800px;
+    background-color: #1a1a1a;
+    width: 650px;
     margin: 7px auto;
     list-style: none;
-    padding: 0;
+    padding: 6px;
 }
 
 .choice{
     padding: 3px 6px;
     margin: 7px;
-    border-radius: 8px;
+    border-radius: 10px;
+    background-color: #DDDDDD;
+}
+
+.choice-on-hover{
+    background-color: #FF851B;
+    color: #DDDDDD;
+}
+
+.choice-on-select{
+    background-color: #FF4136;
+    color: #DDDDDD;
 }
 
 .test-nav{
     list-style: none;
     text-align: center;
     margin-top: 15px;
+    padding-right: 65px;
 }
 
 .nav-button{
@@ -107,6 +133,6 @@ body#overr-boot{
     cursor: pointer;
 }
 
-#appear{
+#hide{
     display: none;
 }
