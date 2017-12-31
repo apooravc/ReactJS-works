@@ -43,6 +43,7 @@ body#overr-boot{
     background-color: #DDDDDD;
     width: 800px;
     margin: 40px auto;
+    border: 3px solid #FF851B;
     border-radius: 10px;
 }
 
@@ -51,6 +52,20 @@ body#overr-boot{
     justify-content: space-around;
     align-items: center;
     padding: 3px 6px;
+}
+
+.result{
+    text-align: center;
+    margin-top: 15px;
+}
+
+.result-text{
+    border: 2px solid black;
+    display: inline-block;
+    border-radius: 10px;
+    padding: 6px 10px;
+    color: white;
+    background-color: #FF851B;
 }
 
 .question-id{
@@ -90,6 +105,7 @@ body#overr-boot{
 .question{
     text-align: center;
     padding: 12px 12px;
+    margin-top: 25px;
 }
 
 .choice-list{
@@ -135,4 +151,36 @@ body#overr-boot{
 
 #hide{
     display: none;
+}
+
+table#overr-boot{
+    font-family: 'Abel', sans-serif;
+    font-size: 21px;
+    width: 700px;
+    margin: 5px auto;
+    border-collapse: collapse;
+}
+
+table caption{
+    font-size: 30px;
+    margin: 10px;
+    text-align: center;
+    padding: 0px;
+    color: #000000;
+}
+
+table tr {
+    background-color: #DDDDDD;
+}
+
+table th {
+    text-align: center;
+    letter-spacing: 0.1em;
+    padding: 6px 12px;
+    border-bottom: 1px solid #000000;
+}
+
+table td{
+    text-align: center;
+    padding: 10px 10px;
 }

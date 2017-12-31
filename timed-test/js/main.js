@@ -1,16 +1,19 @@
 $(document).ready(function () {
 
   var prevIcon = '<i class="fa fa-arrow-circle-o-left fa-lg" aria-hidden="true"></i>',
+      playIcon = '<i class="fa fa-play fa-lg" aria-hidden="true"></i>',
       nextIcon = '<i class="fa fa-arrow-circle-o-right fa-lg" aria-hidden="true">',
       restartIcon = '<i class="fa fa-refresh fa-lg" aria-hidden="true"></i>',
       submitIcon = '<i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i>',
       plusIcon = '<i class="fa fa-plus" aria-hidden="true"></i>',
       minusIcon = '<i class="fa fa-minus" aria-hidden="true"></i>',
       listIcon = '<i class="fa fa-angle-double-right fa-lg" aria-hidden="true"></i>',
-      hashIcon = '<i class="fa fa-hashtag" aria-hidden="true"></i>';
+      hashIcon = '<i class="fa fa-hashtag" aria-hidden="true"></i>',
+      homeIcon = '<i class="fa fa-home fa-lg" aria-hidden="true"></i>';
 
   var state = 0; /* state 0 --> user is on homePage
                     state 1 --> user is undergoing test
+                    state 2 --> user has submitted the test
                   */
 
 
@@ -33,36 +36,36 @@ $(document).ready(function () {
   homePageLayout();
 
   var appData = [{
-    questionId: "1",
-    questionPoints: [+3, 1],
+    questionId: 1,
+    questionPoints: [3, 1],
     question: "What is the day on which the Sun’s direct rays cross the celestial equator called?",
     questionChoices: ["the solstice", "the equinox", "easter", "ecliptic"],
     correctChoice: "the equinox",
-    selectedChoice: ""
+    selectedChoice: "none"
   },
   {
-    questionId: "2",
-    questionPoints: [+1.5, 1.5],
+    questionId: 2,
+    questionPoints: [1, 0.5],
     question: "Who invented the telescope?",
     questionChoices: ["Hans Lippershey", "Archimedes", "Galileo", "Johannes Kepler"],
     correctChoice: "Hans Lippershey",
-    selectedChoice: ""
+    selectedChoice: "none"
   },
   {
-    questionId: "3",
-    questionPoints: [+3.5, 0.5],
+    questionId: 3,
+    questionPoints: [2, 0.5],
     question: "Which of these objects is the farthest from the Sun?",
     questionChoices: ["Saturn", "Kuiper Belt", "Neptune", "90377 Sedna"],
     correctChoice: "90377 Sedna",
-    selectedChoice: ""
+    selectedChoice: "none"
   },
   {
-    questionId: "4",
-    questionPoints: [+5, 2],
+    questionId: 4,
+    questionPoints: [4, 1],
     question: "What term describes the alignment of three celestial bodies?",
     questionChoices: ["sizzle", "syzygy", "symbology", "suzerainty"],
     correctChoice: "syzygy",
-    selectedChoice: ""
+    selectedChoice: "none"
   }
   ];
 
@@ -78,12 +81,13 @@ $(document).ready(function () {
     $(".choice").eq(3).empty().append(listIcon + " " + appData[index].questionChoices[3]);
   }
 
-  $("ul.question-points").children().eq(0).css("background-color", "#01FF70");
+  $("ul.question-points").children().eq(0).css("background-color", "#2ECC40");
   $("ul.question-points").children().eq(1).css("background-color", "#FF4136");
 
+  var interval;
   function startTimer(duration, element) {
     var timer = duration, minutes, seconds;
-    setInterval(function () {
+    interval = setInterval(function () {
       minutes = parseInt(timer / 60, 10);
       seconds = parseInt(timer % 60, 10);
 
@@ -93,7 +97,11 @@ $(document).ready(function () {
       element.empty().append(minutes + " : " + seconds);
       timer--;
       if (timer < 0) {
-        timer = duration;
+        $("#left").hide();
+        $("#right").empty().append("Start another " + homeIcon);
+        state = 2;
+        $(".timer").text("time's up!");
+        displayResult();
       }
     }, 1000);
   }
@@ -105,15 +113,54 @@ $(document).ready(function () {
   }
 
   function choiceOnSelect() {
-    if (state != 0) {
+    if (state == 1) {
       var choices = $(".choice");
       choices.removeClass("choice-on-select");
       for (var i = 0; i < 4; i++)  {
-        if (choices.eq(i).text() === appData[index].selectedChoice) {
+        if (choices.eq(i).text().trim() === appData[index].selectedChoice) {
           choices.eq(i).addClass("choice-on-select");
           break;
         }
       }
+    }
+  }
+
+  var totalPoints = 0;
+  function calcPoints(id) {
+    if (appData[id].selectedChoice === "none") {
+      totalPoints+=0;
+      return 0;
+    } else {
+      if (appData[id].selectedChoice === appData[id].correctChoice) {
+        totalPoints+=appData[id].questionPoints[0];
+        return plusIcon + " " + appData[id].questionPoints[0];
+      }
+      totalPoints+= -1 * appData[id].questionPoints[1];
+      return minusIcon + " " + appData[id].questionPoints[1];
+    }
+  }
+
+  function createTable() {
+    var entries = "", entry;
+    for (var i = 0; i < 4; i++) {
+      entry = "<tr><td>" + appData[i].question + "</td><td>" + appData[i].selectedChoice + "</td><td>" + appData[i].correctChoice + "</td><td>" + calcPoints(i) + "</td></tr>";
+      entries+=entry;
+    }
+    return entries;
+  }
+
+  function displayResult() {
+    var resultTemplate = '<table id="overr-boot"><caption>test summary</caption><thead><tr><th>question</th><th>selected</th><th>correct</th><th>allotted</th></tr></thead><tbody></tbody></table>';
+    $(".question").empty().append(resultTemplate);
+    $("tbody").append(createTable());
+    $(".details").empty().append('<p class="result-text">You have scored ' + totalPoints + ' points</p>').addClass("result");
+    $(".result").removeClass("details");
+    $(".choice-list").remove();
+    $(".test-nav").css("margin-top", "0px");
+    $(".hline").remove();
+    $(".question").css({"padding":"0px", "margin-top":"0px"});
+    if ($(".timer").text() === "time's up!") {
+      clearInterval(interval);
     }
   }
 
@@ -152,12 +199,18 @@ $(document).ready(function () {
 
       state = 1;
       var element = $(".timer");
-      startTimer(179, element);
+      startTimer(59, element);
       startTest();
 
     } else if (state == 1 && index == 0) {
 
       $("#left").empty().append(prevIcon + " Prev");
+      index++;
+      changeQuestion();
+      choiceOnSelect();
+
+    } else if (state == 1 && index == 1) {
+
       index++;
       changeQuestion();
       choiceOnSelect();
@@ -169,10 +222,18 @@ $(document).ready(function () {
       changeQuestion();
       choiceOnSelect();
 
+    } else if (state == 1 && index == 3) {
+
+      $("#left").hide();
+      $("#right").empty().append("Start another " + homeIcon);
+      state = 2;
+      $(".timer").fadeOut();
+      clearInterval(interval);
+      displayResult();
+
     } else {
-      index++;
-      changeQuestion();
-      choiceOnSelect();
+      //when state is 2
+      window.location.replace("index.html");
     }
   });
 
@@ -190,7 +251,7 @@ $(document).ready(function () {
     if (state != 0) {
       $(".choice").removeClass("choice-on-select");
       $(this).addClass("choice-on-select");
-      appData[index].selectedChoice = $(this).text();
+      appData[index].selectedChoice = $(this).text().trim();
     }
   });
 
