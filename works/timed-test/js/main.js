@@ -26,7 +26,7 @@ $(document).ready(function () {
     $(".choice").eq(1).empty().append(listIcon + " there will be 4 options for each question");
     $(".choice").eq(2).empty().append(listIcon + " you've got 3 minutes to complete the test");
     $(".choice").eq(3).empty().append(listIcon + " good luck!");
-    $("#right").empty().append("start " + nextIcon);
+    $("#right").empty().append("Start " + nextIcon);
 
     $("#hide").fadeIn(1300);
     $("ul#hide").fadeIn(1300);
@@ -143,7 +143,7 @@ $(document).ready(function () {
   function createTable() {
     var entries = "", entry;
     for (var i = 0; i < 4; i++) {
-      entry = "<tr><td>" + appData[i].question + "</td><td>" + appData[i].selectedChoice + "</td><td>" + appData[i].correctChoice + "</td><td>" + calcPoints(i) + "</td></tr>";
+      entry = '<tr><td data-label="question">' + appData[i].question + '</td><td data-label="selected">' + appData[i].selectedChoice + '</td><td data-label="correct">' + appData[i].correctChoice + '</td><td data-label="allotted">' + calcPoints(i) + '</td></tr>';
       entries+=entry;
     }
     return entries;
@@ -254,6 +254,5 @@ $(document).ready(function () {
       appData[index].selectedChoice = $(this).text().trim();
     }
   });
-
 });
 

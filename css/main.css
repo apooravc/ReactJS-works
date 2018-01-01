@@ -1,0 +1,68 @@
+body{
+    background-color: #1a1a1a;
+}
+
+.container{
+    border: 3px solid black;
+    border-radius: 20px;
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+    background-color: #AAAAAA;
+
+}
+
+.container > h1{
+    display: inline-block;
+    margin-left: 2%;
+    font-family: 'Poiret One', serif;
+    font-weight: bold;
+    font-size: 48px;
+}
+
+.stack{
+    /*border: 3px solid black;*/
+    font-family: 'Shadows Into Light', sans-serif;
+    font-size: 17px;
+    margin-top: 15%;
+}
+
+.element{
+    border: 3px solid brown;
+    margin: 0 auto;
+    width: 40%;
+    text-align: center;
+    margin-bottom: 1%;
+}
+
+#second, #third{
+    display: none;
+}
+
+.hline{
+    display: block;
+    border-bottom: 5px solid black;
+    margin: 2% auto;
+    width: 60%;
+    box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.6);
+}
+
+.element > a:link{
+    color: #FF851B;
+    text-decoration: none;
+}
+
+.element > a:visited{
+    color: #FF851B;
+    text-decoration: none;
+}
+
+.element > a:hover{
+    text-decoration: none;
+}
+
+.element > a:active{
+    text-decoration: none;
+    position: relative;
+    top: 3px;
+}
