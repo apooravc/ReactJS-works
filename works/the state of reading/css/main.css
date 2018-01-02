@@ -1,0 +1,98 @@
+body{
+    background-color: #1a1a1a;
+    margin: 0;
+    padding: 0;
+}
+
+.dive{
+    border: 2px solid black;
+}
+
+.header{
+    background-color: #ffffff;
+    height: 63px;
+    border: 1px solid #ffffff;
+    position: relative;
+}
+
+.heading{
+    font-family: 'Abel', sans-serif;
+    font-size: 29px;
+    padding: 4px 12px;
+    margin: 3px 0 0 0;
+    letter-spacing: 0.3em;
+    position: absolute;
+    left: 80px;
+    border-bottom: 2px solid #000000;
+}
+
+.main{
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 30px;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+}
+
+.list{
+    width: 450px;
+    margin: 0px auto;
+    padding: 0px 5px;
+}
+
+.font{
+    font-family: 'Raleway', sans-serif;
+    font-size: 22px;
+}
+
+.component{
+    width: 400px;
+    margin: 20px auto;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: black;
+    padding: 6px 12px;
+}
+
+.book-id{
+    border-radius: 10px;
+    background-color: #FF4136;
+    color: #ffffff;
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 50px;
+    margin-bottom: -10px;
+}
+
+.book-title{
+    font-family: 'Abel', sans-serif;
+    font-size: 35px;
+    letter-spacing: 0.02em;
+    color: #FF4136;
+    padding: 15px 0;
+    border-bottom: 2px solid #FF4136;
+    text-align: center;
+}
+
+.book-cover{
+
+}
+
+.book-details{
+
+}
+
+.author{
+
+}
+
+.publisher{
+
+}
+
+.synopsis{
+
+}
+
+.rank, .weeks{
+
+}
