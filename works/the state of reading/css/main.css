@@ -11,31 +11,34 @@ body{
 .header{
     background-color: #ffffff;
     height: 63px;
-    border: 1px solid #ffffff;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: 200ms;
 }
 
 .heading{
     font-family: 'Abel', sans-serif;
     font-size: 29px;
     padding: 4px 12px;
-    margin: 3px 0 0 0;
+    margin: 0 0 0 25px;
     letter-spacing: 0.3em;
-    position: absolute;
-    left: 80px;
     border-bottom: 2px solid #000000;
+    display: inline-block;
+    transition: 100ms;
 }
 
 .main{
     font-family: 'Cinzel Decorative', serif;
-    font-size: 30px;
+    font-size: 1.12em;
     letter-spacing: 0.05em;
     font-weight: bold;
 }
 
 .list{
     width: 450px;
-    margin: 0px auto;
+    margin: 80px auto;
     padding: 0px 5px;
 }
 
@@ -57,15 +60,16 @@ body{
     border-radius: 10px;
     background-color: #FF4136;
     color: #ffffff;
-    display: inline-block;
+    width: 6%;
+    margin: 10px auto;
     padding: 6px 12px;
-    font-size: 50px;
-    margin-bottom: -10px;
+    font-size: 2.27em;
+    text-align: center;
 }
 
 .book-title{
     font-family: 'Abel', sans-serif;
-    font-size: 35px;
+    font-size: 1.6em;
     letter-spacing: 0.02em;
     color: #FF4136;
     padding: 15px 0;
@@ -77,22 +81,27 @@ body{
 
 }
 
-.book-details{
-
-}
-
 .author{
-
-}
-
-.publisher{
-
+    font-weight: bold;
 }
 
 .synopsis{
-
+    font-size: 0.84em;
+    padding: 12px 16px;
+    border-top: 2px solid #FF4136;
+    border-bottom: 2px solid #FF4136;
 }
 
-.rank, .weeks{
+.book-details{
+    font-size: 0.78em;
+    list-style: none;
+}
 
+.book-details> li{
+    margin-bottom: 10px;
+}
+
+.publisher, .rank, .weeks{
+    padding: 6px 6px;
+    border-bottom: 1px solid #0074D9;
 }
