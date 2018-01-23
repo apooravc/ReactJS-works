@@ -1,18 +1,21 @@
-body{
+.box {
+    border: 1px solid black;
+}
+
+body {
     background-color: #1a1a1a;
 }
 
-.container{
+.container {
     border: 3px solid black;
     border-radius: 20px;
     width: 600px;
     height: 600px;
     margin: 0 auto;
-    background-color: #AAAAAA;
-
+    background-color: #faebbc;
 }
 
-.container > h1{
+.heading {
     display: inline-block;
     margin-left: 2%;
     font-family: 'Poiret One', serif;
@@ -20,14 +23,13 @@ body{
     font-size: 48px;
 }
 
-.stack{
-    /*border: 3px solid black;*/
+.stack {
     font-family: 'Shadows Into Light', sans-serif;
     font-size: 17px;
     margin-top: 15%;
 }
 
-.element{
+.element {
     border: 3px solid brown;
     margin: 0 auto;
     width: 40%;
@@ -35,11 +37,11 @@ body{
     margin-bottom: 1%;
 }
 
-#second, #third{
+#second, #third {
     display: none;
 }
 
-.hline{
+.hline {
     display: block;
     border-bottom: 5px solid black;
     margin: 2% auto;
@@ -47,22 +49,38 @@ body{
     box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.6);
 }
 
-.element > a:link{
+.element> a:link {
     color: #FF851B;
     text-decoration: none;
 }
 
-.element > a:visited{
+.element> a:visited {
     color: #FF851B;
     text-decoration: none;
 }
 
-.element > a:hover{
+.element> a:hover {
     text-decoration: none;
 }
 
-.element > a:active{
+.element> a:active {
     text-decoration: none;
     position: relative;
     top: 3px;
+}
+
+@media (max-width: 629px) {
+  .container {
+    width: 97%;
+  }
+}
+
+@media (max-width: 509px) {
+  .heading {
+    font-size: 9.4vw;
+  }
+
+  .container {
+    height: 510px;
+  }
 }
