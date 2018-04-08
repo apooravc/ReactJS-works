@@ -6,7 +6,7 @@ My goal of documenting these projects is that we learn stuff by doing it and it 
 
 ## Table of Contents
 
-1. [Timed test](timed-test/README.md)
-2. [The State of Reading](the-state-of-reading/README.md)
+1. [Timed test](works/timed-test/README.md)
+2. [The State of Reading](works/the-state-of-reading/README.md)
 
 
